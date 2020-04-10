@@ -1,0 +1,3 @@
+D:/Documentos/comp grafica/repo/Computacion-Grafica/triangulo/CMakeFiles/OpenGLProyect.dir
+D:/Documentos/comp grafica/repo/Computacion-Grafica/triangulo/CMakeFiles/ALL_BUILD.dir
+D:/Documentos/comp grafica/repo/Computacion-Grafica/triangulo/CMakeFiles/ZERO_CHECK.dir
