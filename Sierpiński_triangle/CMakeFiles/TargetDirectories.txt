@@ -1,0 +1,3 @@
+D:/Documentos/comp grafica/repo/Computacion-Grafica/Sierpiński_triangle/CMakeFiles/OpenGLProyect.dir
+D:/Documentos/comp grafica/repo/Computacion-Grafica/Sierpiński_triangle/CMakeFiles/ALL_BUILD.dir
+D:/Documentos/comp grafica/repo/Computacion-Grafica/Sierpiński_triangle/CMakeFiles/ZERO_CHECK.dir
