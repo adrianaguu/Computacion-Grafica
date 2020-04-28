@@ -43,7 +43,7 @@ const char* fragmentShader1Source = "#version 330 core\n"
 
 
 
-float lenghtT = 0.9;
+float lenghtT = 0.7;
 
 struct Point2D {
     float x, y;
@@ -246,7 +246,7 @@ int main()
     cout << vertices.size()<< endl;
     cout << vertices.size()/9 << endl;
 
-    
+    int inc_ram = 6;
     int num_vertices = (vertices.size() / 9) * 3;
     while (!glfwWindowShouldClose(window))
     {
@@ -261,8 +261,10 @@ int main()
 
         glUseProgram(shaderProgram1);
         
-        if (colorValue >= 0.9 || colorValue <= 0.3)
+        if (colorValue >= 0.9 || colorValue <= 0.3) {
             inc *= -1;
+            inc_ram = ((inc_ram + 3) % 9) + 3;
+        }
             
         colorValue += inc;
 
@@ -276,7 +278,20 @@ int main()
         int i;
         glUniform4f(vertexColorLocation, 0.0f, 0.0f, 0.0f, 1.0f);
 
-        glDrawArrays(GL_TRIANGLES, 3, num_vertices-3);
+        glDrawArrays(GL_TRIANGLES, 3, num_vertices - 3);
+
+        glUniform4f(vertexColorLocation, 0.35f, colorValue, 1.0f, 1.0f);
+
+        
+        for (int j = 6; j < num_vertices - 3; j += inc_ram)
+        {
+            glDrawArrays(GL_TRIANGLES, j, 3);
+
+        }
+        float timeValue = glfwGetTime();
+        float flag = (sin(timeValue) / 2.0f) + 0.5f;
+
+        
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
        
         for (i=6; i < num_vertices/3 + 3; i += 3)
