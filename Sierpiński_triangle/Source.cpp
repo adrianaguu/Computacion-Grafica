@@ -43,7 +43,7 @@ const char* fragmentShader1Source = "#version 330 core\n"
 
 
 
-float lenghtT = 0.8;
+float lenghtT = 0.9;
 
 struct Point2D {
     float x, y;
@@ -281,16 +281,12 @@ int main()
        
         for (i=6; i < num_vertices/3 + 3; i += 3)
         {
-            vertexColorLocation = glGetUniformLocation(shaderProgram1, "ourColor");
             setColor(c1);           
             glDrawArrays(GL_TRIANGLES, i, 3);
-       
         }
         
         for (i; i< ((num_vertices/3)*2);i += 3)
         {
-
-            vertexColorLocation = glGetUniformLocation(shaderProgram1, "ourColor");
             setColor(c2);
             glDrawArrays(GL_TRIANGLES, i, 3);
 
@@ -298,12 +294,11 @@ int main()
         
         for (i ; i < num_vertices; i += 3)
         {
-
-            vertexColorLocation = glGetUniformLocation(shaderProgram1, "ourColor");
             setColor(c3);
             glDrawArrays(GL_TRIANGLES, i, 3);
-
         }
+
+
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glfwSwapBuffers(window);
      
@@ -359,12 +354,12 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
     if (key == GLFW_KEY_DOWN && action == GLFW_PRESS)
     {
-        if(c1!=0)
-            c1 = 0;
+        if(c3 != 0)
+            c3 = 0;
         else if(c2!=0)
             c2 = 0;
-        else if(c3!=0)
-            c3 = 0;
+        else if(c1!=0)
+            c1 = 0;
     }
 
     if (key == GLFW_KEY_UP && action == GLFW_PRESS)
