@@ -1,10 +1,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
-#include <vector>
 #include <math.h>
+#include "matrix.h"
 
-using namespace std;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -130,12 +128,51 @@ void setColor(int c)
 }
 
 
+
+
 int main()
 { 
     // create initial triangule
     Triangule* T = new Triangule(new Point2D(0.0, lenghtT), new Point2D(-lenghtT, -lenghtT), new Point2D(lenghtT, -lenghtT));
     saveVertices(T);
     int local_depth = depth;
+
+    // create matrix for efects 
+
+    float s_eje = 1.2;
+    vector<vector<float>> m_scale(4);
+    vector<vector<float>> m_indentity(4);
+
+    for (int i = 0; i < 4; i++)
+    {
+        vector<float> row(4, 0);
+        row[i] = 1;
+        m_indentity[i] = row;
+    }
+
+    matrix Identity(m_indentity);
+    Identity.print();
+   
+    for (int i = 0; i < 4; i++)
+    {
+        vector<float> row(4, 0);
+        if (i != 3)
+        {
+            row[i] = s_eje;
+        }
+        else
+        {
+            row[i] = 1;
+        }
+        m_scale[i] = row;
+    }
+
+    matrix Scale(m_scale);
+    //cout << Scale.r << Scale.c;
+    Scale.print();
+   
+    Identity.mult(Scale).print();
+
 
     // build Sierpinski triangle
 
